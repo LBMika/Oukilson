@@ -29,6 +29,16 @@ public class Tools {
         boolean isValid = string.length() <= maxLength && string.length() >= minLength;
         return isValid;
     }
+    
+    /**
+     * checks if length of param is valid( 0 < param < 46)
+     * @param string string input by user(names, emails, etc)
+     * @return validity of string
+     */
+    public static boolean checkLength(String string, int maxLength){
+        boolean isValid = string.length() <= maxLength;
+        return isValid;
+    }
 
     /**
      * Checks if user input contains blank spaces
