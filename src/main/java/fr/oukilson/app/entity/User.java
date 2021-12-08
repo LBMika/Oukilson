@@ -33,10 +33,10 @@ public class User {
      */
     public User(String nickname) throws IllegalArgumentException{
         this.setNickname(nickname);
-        this.friendList = new ArrayList<>();
-        this.deniedList = new ArrayList<>();
-        this.userGameList = new ArrayList<>();
-        this.userLikeList = new ArrayList<>();
+        this.friendList = new ArrayList<User>();
+        this.deniedList = new ArrayList<User>();
+        this.userGameList = new ArrayList<Game>();
+        this.userLikeList = new ArrayList<Game>();
     }
 
     /**
@@ -48,10 +48,10 @@ public class User {
     public User(String nickname,String email) throws IllegalArgumentException{
         this(nickname);
         this.setEmail(email);
-        this.friendList = new ArrayList<>();
-        this.deniedList = new ArrayList<>();
-        this.userGameList = new ArrayList<>();
-        this.userLikeList = new ArrayList<>();
+        this.friendList = new ArrayList<User>();
+        this.deniedList = new ArrayList<User>();
+        this.userGameList = new ArrayList<Game>();
+        this.userLikeList = new ArrayList<Game>();
     }
 
     /**
@@ -64,10 +64,10 @@ public class User {
     public User(String nickname, String email, String firstName) throws IllegalArgumentException{
         this(nickname, email);
         this.setFirstName(firstName);
-        this.friendList = new ArrayList<>();
-        this.deniedList = new ArrayList<>();
-        this.userGameList = new ArrayList<>();
-        this.userLikeList = new ArrayList<>();
+        this.friendList = new ArrayList<User>();
+        this.deniedList = new ArrayList<User>();
+        this.userGameList = new ArrayList<Game>();
+        this.userLikeList = new ArrayList<Game>();
     }
 
     /**
@@ -81,10 +81,10 @@ public class User {
     public User(String nickname, String email, String firstName, String lastName) throws IllegalArgumentException{
         this(nickname, email, firstName);
         this.setLastName(lastName);
-        this.friendList = new ArrayList<>();
-        this.deniedList = new ArrayList<>();
-        this.userGameList = new ArrayList<>();
-        this.userLikeList = new ArrayList<>();
+        this.friendList = new ArrayList<User>();
+        this.deniedList = new ArrayList<User>();
+        this.userGameList = new ArrayList<Game>();
+        this.userLikeList = new ArrayList<Game>();
     }
 
     //methods
