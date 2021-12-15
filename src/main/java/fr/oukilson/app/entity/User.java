@@ -1,6 +1,9 @@
 package fr.oukilson.app.entity;
 
 import java.sql.Blob;
+import java.util.List;
+
+
 import java.util.*;
 
 public class User {
@@ -13,6 +16,7 @@ public class User {
     private String nickname; //TODO test unicité du nickname
     private Blob icon;
     private List<Token> token;
+
     /*
     if needs to be ordered we use a list because it has methods(?) to get first & last
     so it's good if we also just need to get a FIFO(PEPS)
@@ -24,6 +28,7 @@ public class User {
     private HashMap<UUID, Game> userGameList;
     private HashMap<UUID, Game> userLikeList;
 
+
     /**
      * empty constructor
      */
@@ -31,6 +36,7 @@ public class User {
     }
 
     /**
+
      * basic constructor for testing purposes
      * @param nickname user nickname
      */
@@ -63,10 +69,12 @@ public class User {
     public User(String nickname, String email, String firstName) throws IllegalArgumentException{
         this(nickname, email);
         this.setFirstName(firstName);
+
         this.friendList = new HashMap<>();
         this.deniedList = new HashMap<>();
         this.userGameList = new HashMap<>();
         this.userLikeList = new HashMap<>();
+
     }
 
     /**
@@ -93,6 +101,7 @@ public class User {
      * @throws IllegalArgumentException if the user is already on the friend or denied list
      */
     public void addUserToFriendList(User user) throws IllegalArgumentException{
+
         if(!Tools.userOnList(user, this.getFriendList()) && !Tools.userOnList(user, this.getDeniedList())) {
             this.getFriendList().put(user.getUUID(), user);
         }
@@ -108,11 +117,13 @@ public class User {
      * @throws IllegalArgumentException if the user is already on the friend or denied list
      */
     public void addUserToDeniedList(User user) throws IllegalArgumentException{
+
         if(!Tools.userOnList(user, this.getDeniedList()) && !Tools.userOnList(user, this.getFriendList())) {
             this.getDeniedList().put(user.getUUID(), user);
         }
         else {
             throw new IllegalArgumentException("user already on list");
+
         }
         this.setDeniedList(this.getDeniedList());
     }
@@ -153,6 +164,7 @@ public class User {
      * @throws IllegalArgumentException if the user isn't on the list the main user wants to remove them from
      */
     public void removeUserFromFriendList(User user) throws IllegalArgumentException{
+
         if(Tools.userOnList(user, this.getFriendList())) {
             this.getFriendList().remove(user.getUUID());
         }
@@ -168,8 +180,10 @@ public class User {
      * @throws IllegalArgumentException if the user isn't on the list the main user wants to remove them from
      */
     public void removeUserFromDeniedList(User user) throws IllegalArgumentException{
+
         if(Tools.userOnList(user, this.getDeniedList())) {
             this.getDeniedList().remove(user.getUUID());
+
         }
         else {
             throw new IllegalArgumentException("user is not on list.");
@@ -221,6 +235,7 @@ public class User {
         this.UUID = UUID;
     }
 
+
     /**
      * getter for user's nickname
      * @return user's nickname
@@ -229,10 +244,12 @@ public class User {
         return nickname;
     }
 
+
     /**
      * setter for a user's nickname
      * @param nickname new user nickname
      */
+
     public void setNickname(String nickname) throws IllegalArgumentException{
     String regex = "^[a-zA-Z0-9_-]{3,45}$";
         if (!Tools.checkRegex(regex, nickname)) {
@@ -256,6 +273,7 @@ public class User {
      * @param email user's new email
      */
     public void setEmail(String email) throws IllegalArgumentException{
+
         String regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,}){10,45}$";
         //"\\b[\\w.!#$%&’*+\\/=?^`{|}~-]+@[\\w-]+(?:\\.[\\w-]+)*\\b{10,45}$";
@@ -263,6 +281,7 @@ public class User {
             throw new IllegalArgumentException("email must be valid.");
         }
         else {
+
             this.email = email;
         }
     }
@@ -281,6 +300,7 @@ public class User {
      * @throws IllegalArgumentException if new name is too long, too short, or generally invalid
      */
     public void setFirstName(String firstName) throws IllegalArgumentException{
+
         String regex = "^[a-zA-Z]{2,45}$";
         if (!Tools.checkRegex(regex, firstName)) {
             throw new IllegalArgumentException("input is invalid");
@@ -304,6 +324,7 @@ public class User {
      * @throws IllegalArgumentException if new name is too long, too short, or generally invalid
      */
     public void setLastName(String lastName) throws IllegalArgumentException{
+
         String regex = "^[a-zA-Z]{2,45}$";
         if (!Tools.checkRegex(regex, lastName)) {
             throw new IllegalArgumentException("input is invalid");
@@ -317,7 +338,9 @@ public class User {
      * getter for a user's friend list
      * @return a user's friend list
      */
+
     public HashMap<UUID, User> getFriendList(){
+
         return friendList;
     }
 
@@ -325,7 +348,9 @@ public class User {
      * setter for a user's friend list
      * @param friendList list of users the user's chosen as friends
      */
+
     public void setFriendList(HashMap<UUID, User> friendList) {
+
         this.friendList = friendList;
     }
 
@@ -333,7 +358,9 @@ public class User {
      * get a user's denied list
      * @return a denied list object
      */
+
     public HashMap<UUID, User> getDeniedList() {
+
         return deniedList;
     }
 
@@ -341,7 +368,9 @@ public class User {
      * set a denied list object
      * @param deniedList new object to replace the existing one
      */
+
     public void setDeniedList(HashMap<UUID, User> deniedList) {
+
         this.deniedList = deniedList;
     }
 
@@ -349,6 +378,7 @@ public class User {
      * get a user's owned game list
      * @return the list of objects
      */
+
     public HashMap<UUID, Game> getUserGameList() {
         return userGameList;
     }
@@ -357,7 +387,9 @@ public class User {
      * set a list of owned game objects for this user
      * @param userGameList list of objects to set
      */
+
     public void setUserGameList(HashMap<UUID, Game> userGameList) {
+
         this.userGameList = userGameList;
     }
 
@@ -365,7 +397,9 @@ public class User {
      * get a user's liked game list
      * @return a list of liked games objects for the user
      */
+
     public HashMap<UUID, Game> getUserLikeList() {
+
         return userLikeList;
     }
 
@@ -373,6 +407,7 @@ public class User {
      * set a list of liked games objects for this user
      * @param userLikeList the list of objects to set
      */
+
     public void setUserLikeList(HashMap<UUID, Game> userLikeList) {
         this.userLikeList = userLikeList;
     }
@@ -392,4 +427,5 @@ public class User {
     public void setToken(List<Token> token) {
         this.token = token;
     }
+
 }
