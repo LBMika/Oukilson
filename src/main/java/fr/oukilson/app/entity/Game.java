@@ -193,6 +193,4 @@ public class Game {
 		this.id = id;
 	}
 	
-	
-	
 }

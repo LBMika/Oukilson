@@ -1,3 +1,5 @@
+.settings
+
 # Compiled class file
 *.class
 
@@ -23,6 +25,7 @@
 hs_err_pid*
 /bin/
 
+
 # IntelliJ project files 
 *.iml
 *.iws
@@ -33,3 +36,6 @@ hs_err_pid*
 .settings/
 .classpath
 .project
+=======
+/target/
+
