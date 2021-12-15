@@ -40,6 +40,7 @@ public class User {
      * basic constructor for testing purposes
      * @param nickname user nickname
      */
+
     public User(String nickname) {
         this.nickname = nickname;
     }
@@ -53,10 +54,12 @@ public class User {
     public User(String nickname,String email) throws IllegalArgumentException{
         this.setNickname(nickname);
         this.setEmail(email);
+
         this.friendList = new HashMap<>();
         this.deniedList = new HashMap<>();
         this.userGameList = new HashMap<>();
         this.userLikeList = new HashMap<>();
+
     }
 
     /**
@@ -68,7 +71,7 @@ public class User {
      */
     public User(String nickname, String email, String firstName) throws IllegalArgumentException{
         this(nickname, email);
-        this.setFirstName(firstName);
+
 
         this.friendList = new HashMap<>();
         this.deniedList = new HashMap<>();
@@ -88,10 +91,12 @@ public class User {
     public User(String nickname, String email, String firstName, String lastName) throws IllegalArgumentException{
         this(nickname, email, firstName);
         this.setLastName(lastName);
+
         this.friendList = new HashMap<>();
         this.deniedList = new HashMap<>();
         this.userGameList = new HashMap<>();
         this.userLikeList = new HashMap<>();
+
     }
 
     //methods
